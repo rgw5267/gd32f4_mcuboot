@@ -1,0 +1,8 @@
+[submodule "aft_sdk"]
+	path = aft_sdk
+	url = https://github.com/afantey/aft_sdk.git
+	branch = develop
+[submodule "aft_bsp_gd32"]
+	path = aft_bsp_gd32
+	url = https://github.com/afantey/aft_bsp_gd32.git
+	branch = master
