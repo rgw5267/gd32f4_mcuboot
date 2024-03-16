@@ -26,14 +26,13 @@
 extern "C" {
 #endif
 
-/* Hardware Drivers Config */
+/* Hardware Info */
 
-#define SOC_SERIES_STM32F4xx
-// #define SOC_CHIP_STM32L071xC
+#define SOC_SERIES_GD32F4xx
+#define SOC_CHIP_GD32F470
 
 #define MCU_FLASH_SIZE             (1 * 1024 * 1024)
 #define MCU_FLASH_PAGE_SIZE        (128 * 1024)
-
 #define MCU_FLASH_START_ADRESS     ((uint32_t)0x08000000)
 #define MCU_FLASH_END_ADDRESS      ((uint32_t)(MCU_FLASH_START_ADRESS + MCU_FLASH_SIZE))
 

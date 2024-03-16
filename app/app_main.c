@@ -24,42 +24,10 @@
 //    return ch;
 //}
 
-struct arm_vector_table {
-    uint32_t msp;
-    uint32_t reset;
-};
 
-
-/**
-  * @brief ?? image
-  * @param struct boot_rsp * rsp: 
-  * retval N/A.
-  */
-static void do_boot(struct boot_rsp * rsp)
-{
-    struct arm_vector_table *vt;
-
-    LOG_I("imgae_off=%x flashid=%d", rsp->br_image_off, rsp->br_flash_dev_id);
-    LOG_I("raw_imgae_off=%x", (rsp->br_image_off + rsp->br_hdr->ih_hdr_size));
-
-//    W25Q_Memory_Mapped_Enable();
-    vt = (struct arm_vector_table *)(rsp->br_image_off + rsp->br_hdr->ih_hdr_size);
-    SysTick->CTRL = 0;
-
-    SCB->VTOR = (uint32_t)vt;
-    __set_MSP(*(__IO uint32_t *)vt->msp);
-    ((void (*)(void))vt->reset)();
-
-//    while(1)
-//    {
-//        rt_thread_mdelay(500);
-//    }
-}
-
-void JumpToApp(void)
+void JumpToApp(uint32_t AppAddr)
 {
   void (*SysMemBootJump)(void);
-  __IO uint32_t AppAddr = 0x8010000;
     
 
   SysTick->CTRL = 0;
@@ -97,6 +65,45 @@ void JumpToApp(void)
   }
 }
 
+struct arm_vector_table {
+    uint32_t msp;
+    uint32_t reset;
+};
+
+
+/**
+  * @brief ?? image
+  * @param struct boot_rsp * rsp: 
+  * retval N/A.
+  */
+static void do_boot(struct boot_rsp * rsp)
+{
+    struct arm_vector_table *vt;
+    const struct fal_partition *fal_part = NULL;
+
+    fal_part = fal_partition_find("primary");
+
+    uint32_t image_off = MCU_FLASH_START_ADRESS + fal_part->offset + rsp->br_image_off;
+    uint32_t raw_imgae_off = image_off + rsp->br_hdr->ih_hdr_size;
+    LOG_I("imgae_off=0x%x flashid=%d", image_off, rsp->br_flash_dev_id);
+    LOG_I("raw_imgae_off=0x%x", raw_imgae_off);
+
+    JumpToApp(raw_imgae_off);
+
+//    vt = (struct arm_vector_table *)(raw_imgae_off);
+//    SysTick->CTRL = 0;
+
+//    SCB->VTOR = (uint32_t)vt;
+//    __set_MSP(*(__IO uint32_t *)vt->msp);
+//    ((void (*)(void))vt->reset)();
+
+//    while(1)
+//    {
+//        rt_thread_mdelay(500);
+//    }
+}
+
+
 int main(void)
 {
 
@@ -105,13 +112,13 @@ int main(void)
     
     board_init();
     LOG_D("Hello SDK\n");
-//JumpToApp();
+//    JumpToApp(0x08021000);
     fal_init();
 
     // MCUboot validates the application images and prepares the booting process.
     FIH_CALL(boot_go, fih_rc, &rsp);
 
-    if (fih_not_eq(fih_rc, FIH_SUCCESS)) {
+    if (FIH_NOT_EQ(fih_rc, FIH_SUCCESS)) {
         LOG_E("Unable to find bootable image");
         FIH_PANIC; // infinite loop
     }

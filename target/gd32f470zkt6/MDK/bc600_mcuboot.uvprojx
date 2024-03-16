@@ -313,7 +313,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>7</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -337,9 +337,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_STDPERIPH_DRIVER,GD32F470</Define>
+              <Define>USE_STDPERIPH_DRIVER,GD32F470,NDEBUG</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\aft_bsp_gd32\gd32_drivers;..\..\..\aft_bsp_gd32\GD32F4xx_Firmware_Library\CMSIS;..\..\..\aft_bsp_gd32\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include;..\..\..\aft_bsp_gd32\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include;..\..\..\aft_sdk\src;..\..\..\aft_sdk\src\components\drivers;..\..\..\aft_sdk\src\3rdparty\fal\inc;..\..\..\aft_sdk\src\3rdparty\mcuboot\bootutil\include;..\..\..\aft_sdk\src\3rdparty\mcuboot\bootutil\src;..\..\..\aft_sdk\src\3rdparty\mcuboot\ext\tinycrypt\lib\include;..\..\..\app;..\board;..\board\fal_porting;..\board\mcuboot_porting\include;..\..\..\aft_sdk\src\3rdparty\SEGGER_RTT_V752d\RTT</IncludePath>
+              <IncludePath>..\..\..\aft_bsp_gd32\gd32_drivers;..\..\..\aft_bsp_gd32\GD32F4xx_Firmware_Library\CMSIS;..\..\..\aft_bsp_gd32\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Include;..\..\..\aft_bsp_gd32\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Include;..\..\..\aft_sdk\src;..\..\..\aft_sdk\src\components\drivers;..\..\..\aft_sdk\src\3rdparty\fal\inc;..\..\..\aft_sdk\src\3rdparty\mcuboot\boot\bootutil\include;..\..\..\aft_sdk\src\3rdparty\mcuboot\boot\bootutil\src;..\..\..\app;..\board;..\board\fal_porting;..\board\mcuboot_porting\include;..\..\..\aft_sdk\src\3rdparty\SEGGER_RTT_V752d\RTT;..\..\..\aft_sdk\src\3rdparty\mcuboot\ext\mbedtls-asn1\include;..\..\..\aft_sdk\src\3rdparty\mcuboot\ext\mbedtls\include;..\..\..\aft_sdk\src\3rdparty\mcuboot\ext\fiat\src;..\..\..\aft_sdk\src\3rdparty\mcuboot\ext\tinycrypt-sha512\lib\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -411,7 +411,7 @@
             <File>
               <FileName>startup_gd32f450_470.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\..\..\aft_bsp_gd32\GD32F4xx_Firmware_Library\CMSIS\GD\GD32F4xx\Source\ARM\startup_gd32f450_470.s</FilePath>
+              <FilePath>..\board\startup_gd32f450_470.s</FilePath>
             </File>
             <File>
               <FileName>system_gd32f4xx.c</FileName>
@@ -565,44 +565,39 @@
           <GroupName>sdk/mcuboot</GroupName>
           <Files>
             <File>
-              <FileName>flash_map_backend.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\board\mcuboot_porting\src\flash_map_backend\flash_map_backend.c</FilePath>
-            </File>
-            <File>
               <FileName>loader.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\bootutil\src\loader.c</FilePath>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\boot\bootutil\src\loader.c</FilePath>
             </File>
             <File>
               <FileName>fault_injection_hardening.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\bootutil\src\fault_injection_hardening.c</FilePath>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\boot\bootutil\src\fault_injection_hardening.c</FilePath>
             </File>
             <File>
               <FileName>swap_scratch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\bootutil\src\swap_scratch.c</FilePath>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\boot\bootutil\src\swap_scratch.c</FilePath>
             </File>
             <File>
               <FileName>bootutil_misc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\bootutil\src\bootutil_misc.c</FilePath>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\boot\bootutil\src\bootutil_misc.c</FilePath>
             </File>
             <File>
               <FileName>bootutil_public.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\bootutil\src\bootutil_public.c</FilePath>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\boot\bootutil\src\bootutil_public.c</FilePath>
             </File>
             <File>
               <FileName>image_validate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\bootutil\src\image_validate.c</FilePath>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\boot\bootutil\src\image_validate.c</FilePath>
             </File>
             <File>
               <FileName>tlv.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\bootutil\src\tlv.c</FilePath>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\boot\bootutil\src\tlv.c</FilePath>
             </File>
             <File>
               <FileName>flash_map_backend.h</FileName>
@@ -640,14 +635,19 @@
               <FilePath>..\board\mcuboot_porting\include\watchdog\watchdog.h</FilePath>
             </File>
             <File>
-              <FileName>sha256.c</FileName>
+              <FileName>flash_map_backend.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\ext\tinycrypt\lib\source\sha256.c</FilePath>
+              <FilePath>..\board\mcuboot_porting\src\flash_map_backend\flash_map_backend.c</FilePath>
             </File>
             <File>
-              <FileName>utils.c</FileName>
+              <FileName>app_enc_keys.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\ext\tinycrypt\lib\source\utils.c</FilePath>
+              <FilePath>..\board\mcuboot_porting\src\keys\app_enc_keys.c</FilePath>
+            </File>
+            <File>
+              <FileName>image_ed25519.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\boot\bootutil\src\image_ed25519.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -668,6 +668,41 @@
               <FileName>gd32f4xx_fmc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\aft_bsp_gd32\GD32F4xx_Firmware_Library\GD32F4xx_standard_peripheral\Source\gd32f4xx_fmc.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mcuboot/ext</GroupName>
+          <Files>
+            <File>
+              <FileName>asn1parse.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\ext\mbedtls-asn1\src\asn1parse.c</FilePath>
+            </File>
+            <File>
+              <FileName>platform_util.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\ext\mbedtls-asn1\src\platform_util.c</FilePath>
+            </File>
+            <File>
+              <FileName>curve25519.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\ext\fiat\src\curve25519.c</FilePath>
+            </File>
+            <File>
+              <FileName>sha256.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\ext\mbedtls\library\sha256.c</FilePath>
+            </File>
+            <File>
+              <FileName>bignum.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\ext\mbedtls\library\bignum.c</FilePath>
+            </File>
+            <File>
+              <FileName>sha512.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\aft_sdk\src\3rdparty\mcuboot\ext\mbedtls\library\sha512.c</FilePath>
             </File>
           </Files>
         </Group>

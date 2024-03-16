@@ -9,30 +9,11 @@
 #define __MCUBOOT_CONFIG_H__
 
 /*
- * Template configuration file for MCUboot.
- *
- * When porting MCUboot to a new target, copy it somewhere that your
- * include path can find it as mcuboot_config/mcuboot_config.h, and
- * make adjustments to suit your platform.
- *
- * For examples, see:
- *
- * boot/zephyr/include/mcuboot_config/mcuboot_config.h
- * boot/mynewt/mcuboot_config/include/mcuboot_config/mcuboot_config.h
- */
-
-/*
  * Signature types
- *
- * You must choose exactly one signature type.
  */
-
-/* Uncomment for RSA signature support */
-/* #define MCUBOOT_SIGN_RSA */
-
-/* Uncomment for ECDSA signatures using curve P-256. */
-/* #define MCUBOOT_SIGN_EC256 */
-
+// #define MCUBOOT_SIGN_EC256
+#define MCUBOOT_SIGN_ED25519
+#define HAVE_KEYS
 
 /*
  * Upgrade mode
@@ -45,7 +26,7 @@
  * You can enable only one mode at a time from the list below to override
  * the default upgrade mode.
  */
-
+// #  define MCUBOOT_SWAP_USING_MOVE 1
 /* Uncomment to enable the overwrite-only code path. */
 #define MCUBOOT_OVERWRITE_ONLY
 
@@ -55,33 +36,16 @@
 #define MCUBOOT_OVERWRITE_ONLY_FAST
 #endif
 
-/* Uncomment to enable the direct-xip code path. */
-/* #define MCUBOOT_DIRECT_XIP */
-/* Uncomment to enable the revert mechanism in direct-xip mode. */
-/* #define MCUBOOT_DIRECT_XIP_REVERT */
 
-/* Uncomment to enable the ram-load code path. */
-/* #define MCUBOOT_RAM_LOAD */
-
-/*
- * Cryptographic settings
- *
- * You must choose between mbedTLS and Tinycrypt as source of
- * cryptographic primitives. Other cryptographic settings are also
- * available.
- */
-
-/* Uncomment to use ARM's mbedTLS cryptographic primitives */
-/* #define MCUBOOT_USE_MBED_TLS */
-/* Uncomment to use Tinycrypt's. */
-#define MCUBOOT_USE_TINYCRYPT
+#define MCUBOOT_USE_MBED_TLS
+// #define MCUBOOT_USE_TINYCRYPT
 
 /*
  * Always check the signature of the image in the primary slot before booting,
  * even if no upgrade was performed. This is recommended if the boot
  * time penalty is acceptable.
  */
-//#define MCUBOOT_VALIDATE_PRIMARY_SLOT
+#define MCUBOOT_VALIDATE_PRIMARY_SLOT
 
 /*
  * Flash abstraction
@@ -95,7 +59,7 @@
 
 /* Default maximum number of flash sectors per image slot; change
  * as desirable. */
-#define MCUBOOT_MAX_IMG_SECTORS 128
+#define MCUBOOT_MAX_IMG_SECTORS 3
 
 /* Default number of separately updateable images; change in case of
  * multiple images. */
