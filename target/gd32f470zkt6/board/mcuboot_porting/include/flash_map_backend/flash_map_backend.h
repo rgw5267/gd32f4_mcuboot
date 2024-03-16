@@ -178,7 +178,16 @@ uint8_t flash_area_erased_val(const struct flash_area *area);
 //! Given flash area ID, return info about sectors within the area
 int flash_area_get_sectors(int fa_id, uint32_t *count,
                            struct flash_sector *sectors);
-
+/* Retrieve the flash sector withing given flash area, at a given offset.
+ *
+ * @param fa        flash area where the sector is taken from.
+ * @param off       offset within flash area.
+ * @param sector    structure of sector information.
+ * Returns 0 on success, -ERANGE if @p off is beyond flash area size,
+ *         other negative errno code on failure.
+ */
+int flash_area_get_sector(const struct flash_area *fa, uint32_t off,
+                          struct flash_sector *sectors);
 //! Returns the `fa_id` for slot, where slot is 0 (primary) or 1 (secondary).
 //!
 //! `image_index` (0 or 1) is the index of the image. Image index is

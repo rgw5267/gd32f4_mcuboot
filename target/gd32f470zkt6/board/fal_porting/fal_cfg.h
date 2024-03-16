@@ -30,9 +30,8 @@ extern const struct fal_flash_dev onchip_flash0;
 {                                                                                    \
     {FAL_PART_MAGIC_WORD, "boot"      , FAL_USING_ONCHIP_FLASH_DEV_NAME, 0         , 64  * 1024, 0}, \
     {FAL_PART_MAGIC_WORD, "params"    , FAL_USING_ONCHIP_FLASH_DEV_NAME, 64  * 1024, 64  * 1024, 0}, \
-    {FAL_PART_MAGIC_WORD, "primary"   , FAL_USING_ONCHIP_FLASH_DEV_NAME, 128 * 1024, 384 * 1024, 0}, \
-    {FAL_PART_MAGIC_WORD, "secondary" , FAL_USING_ONCHIP_FLASH_DEV_NAME, 512 * 1024, 384 * 1024, 0}, \
-    {FAL_PART_MAGIC_WORD, "scratch"   , FAL_USING_ONCHIP_FLASH_DEV_NAME, 896 * 1024, 128 * 1024, 0}, \
+    {FAL_PART_MAGIC_WORD, "primary"   , FAL_USING_ONCHIP_FLASH_DEV_NAME, 128 * 1024, 512 * 1024, 0}, \
+    {FAL_PART_MAGIC_WORD, "secondary" , FAL_USING_ONCHIP_FLASH_DEV_NAME, 640 * 1024, 384 * 1024, 0}, \
 }
 
 #endif /* FAL_PART_HAS_TABLE_CFG */

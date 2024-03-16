@@ -245,6 +245,15 @@ int flash_area_get_sectors(int fa_id, uint32_t *count,
     return 0;
 }
 
+int flash_area_get_sector(const struct flash_area *fa, uint32_t off,
+                          struct flash_sector *sector)
+{
+    sector->fs_off = (off / FLASH_SECTOR_SIZE) * FLASH_SECTOR_SIZE;
+    sector->fs_size = FLASH_SECTOR_SIZE;
+
+    return 0;
+}
+
 //! Returns the `fa_id` for slot, where slot is 0 (primary) or 1 (secondary).
 //!
 //! `image_index` (0 or 1) is the index of the image. Image index is

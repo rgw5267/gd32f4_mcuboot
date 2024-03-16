@@ -17,7 +17,7 @@
 
 #include <bootutil/sign_key.h>
 #include <mcuboot_config/mcuboot_config.h>
-#include "ed25519_pub_key.pub"
+#include "ed25519_pub_key.c"
 
 #if defined(MCUBOOT_SIGN_RSA)
 #define HAVE_KEYS

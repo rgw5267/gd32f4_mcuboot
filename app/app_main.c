@@ -114,7 +114,7 @@ int main(void)
     LOG_D("Hello SDK\n");
 //    JumpToApp(0x08021000);
     fal_init();
-
+//    boot_set_pending(0);
     // MCUboot validates the application images and prepares the booting process.
     FIH_CALL(boot_go, fih_rc, &rsp);
 
