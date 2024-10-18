@@ -11,7 +11,7 @@
 
 #define FAL_PART_HAS_TABLE_CFG
 
-#define FAL_USING_ONCHIP_FLASH_DEV_NAME           "onchip_flash"
+#define FAL_USING_ONCHIP_FLASH_DEV_NAME           "onchip_flash0"
 #define FAL_USING_NOR_FLASH_DEV_NAME              "norflash0"
 
 /* ===================== Flash device Configuration ========================= */
